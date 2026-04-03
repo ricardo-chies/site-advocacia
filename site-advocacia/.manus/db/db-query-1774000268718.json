@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO admin_users (username, passwordHash, email, active) VALUES ('uriel', '$2b$10$gftpEDjPSJwQEjByI9QiheC0o1vZWmN.IGhXFGBVpTbSiI0tc0u7G', 'uriel@urielnascimentoadvocacia.com.br', true);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3L5Hfib8v2uCTcY.c3ba29191de4 --database FL8EyJ9BRANQkvye7FFgue --execute INSERT INTO admin_users (username, passwordHash, email, active) VALUES ('uriel', '$2b$10$gftpEDjPSJwQEjByI9QiheC0o1vZWmN.IGhXFGBVpTbSiI0tc0u7G', 'uriel@urielnascimentoadvocacia.com.br', true);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 388
+}

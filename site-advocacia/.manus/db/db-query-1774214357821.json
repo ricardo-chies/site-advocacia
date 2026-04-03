@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, username, passwordHash FROM admin_users WHERE username = 'uriel' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway03.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3L5Hfib8v2uCTcY.c3ba29191de4 --database FL8EyJ9BRANQkvye7FFgue --execute SELECT id, username, passwordHash FROM admin_users WHERE username = 'uriel' LIMIT 1;",
+  "rows": [
+    {
+      "id": "1",
+      "username": "uriel",
+      "passwordHash": "$2b$10$gftpEDjPSJwQEjByI9QiheC0o1vZWmN.IGhXFGBVpTbSiI0tc0u7G"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tusername\tpasswordHash\n1\turiel\t$2b$10$gftpEDjPSJwQEjByI9QiheC0o1vZWmN.IGhXFGBVpTbSiI0tc0u7G\n",
+  "stderr": "",
+  "execution_time_ms": 515
+}
