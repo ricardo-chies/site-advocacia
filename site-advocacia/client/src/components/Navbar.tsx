@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, Scale, Lock } from "lucide-react";
+import { AreasDropdown } from "./AreasDropdown";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663314417964/FL8EyJ9BRANQkvye7FFgue/logo-uriel_d175ea8f.png";
 
 const navLinks = [
   { href: "/#quem-somos", label: "Quem Somos" },
-  { href: "/#areas", label: "Áreas de Atuação" },
   { href: "/blog", label: "Blog" },
   { href: "/noticias", label: "Notícias" },
   { href: "/#faq", label: "Perguntas Frequentes" },
@@ -65,7 +65,25 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 1).map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md hover:text-white"
+                style={{ color: "oklch(85% 0.02 245)" }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.color = "oklch(74% 0.12 80)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.color = "oklch(85% 0.02 245)";
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+            <AreasDropdown />
+            {navLinks.slice(1).map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -121,7 +139,52 @@ export default function Navbar() {
             className="lg:hidden py-4 border-t"
             style={{ borderColor: "oklch(25% 0.06 245)" }}
           >
-            {navLinks.map((link) => (
+            {navLinks.slice(0, 1).map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="block px-4 py-3 text-sm font-medium transition-colors"
+                style={{ color: "oklch(85% 0.02 245)" }}
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="px-4 py-3">
+              <div
+                className="text-sm font-medium mb-2"
+                style={{ color: "oklch(85% 0.02 245)" }}
+              >
+                Áreas de atuação
+              </div>
+              <div className="space-y-2 ml-2">
+                <Link href="/areas/trabalhista-bancario">
+                  <a
+                    className="block text-sm transition-colors"
+                    style={{ color: "oklch(85% 0.02 245)" }}
+                  >
+                    • Trabalhista Bancário
+                  </a>
+                </Link>
+                <Link href="/areas/trabalhista">
+                  <a
+                    className="block text-sm transition-colors"
+                    style={{ color: "oklch(85% 0.02 245)" }}
+                  >
+                    • Direito Trabalhista
+                  </a>
+                </Link>
+                <Link href="/areas/previdenciario">
+                  <a
+                    className="block text-sm transition-colors"
+                    style={{ color: "oklch(85% 0.02 245)" }}
+                  >
+                    • Previdenciário
+                  </a>
+                </Link>
+              </div>
+            </div>
+            {navLinks.slice(1).map((link) => (
               <a
                 key={link.href}
                 href={link.href}

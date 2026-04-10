@@ -12,6 +12,12 @@ const WHATSAPP_URL = "https://wa.me/5511984708027?text=Olá! Gostaria de saber m
 
 const areas = [
   {
+    icon: Scale,
+    title: "Direito Trabalhista Bancário",
+    desc: "Defesa especializada para bancários contra abusos trabalhistas, incluindo horas extras, assédio moral e irregularidades contratuais.",
+    link: "/areas/trabalhista-bancario"
+  },
+  {
     icon: HeartPulse,
     title: "Ação Contra Plano de Saúde",
     desc: "Negativa de cobertura, cancelamento indevido, reajustes abusivos e recusa de procedimentos médicos pelo plano de saúde."
@@ -70,7 +76,7 @@ function HeroSection() {
             <div className="flex items-center gap-2 mb-6">
               <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
               <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-                Especialistas em Direito da Saúde
+                Direito da Saúde e Direito Trabalhista Bancário
               </span>
             </div>
 
@@ -86,21 +92,10 @@ function HeroSection() {
             </h1>
 
             <p className="text-lg mb-8 leading-relaxed" style={{ color: "oklch(80% 0.03 245)" }}>
-              Especialistas em Direito da Saúde: planos de saúde, erro médico, SUS e seguros.
-              Defenda seus direitos com quem entende profundamente da área.
+              Especialistas em Direito da Saúde e Direito Trabalhista Bancário: atuação em planos de saúde, erro médico, SUS, seguros e na defesa de bancários contra horas extras indevidas, assédio e irregularidades trabalhistas. Defenda seus direitos com quem entende profundamente da área.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-7 py-4 rounded-lg font-semibold text-base transition-all duration-200 hover:opacity-90 hover:scale-105"
-                style={{ backgroundColor: "oklch(74% 0.12 80)", color: "oklch(16% 0.065 245)" }}
-              >
-                <MessageCircle className="w-5 h-5" />
-                Contato no WhatsApp
-              </a>
               <a
                 href="#quem-somos"
                 className="flex items-center gap-2 px-7 py-4 rounded-lg font-semibold text-base border-2 transition-all duration-200 hover:bg-white/10"
@@ -110,22 +105,6 @@ function HeroSection() {
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-10" style={{ borderTop: "1px solid oklch(25% 0.06 245)" }}>
-              {[
-                { value: "10+", label: "Anos de Experiência" },
-                { value: "500+", label: "Clientes Atendidos" },
-                { value: "98%", label: "Casos Resolvidos" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-3xl font-bold" style={{ color: "oklch(74% 0.12 80)", fontFamily: "'Playfair Display', serif" }}>
-                    {stat.value}
-                  </div>
-                  <div className="text-xs mt-1" style={{ color: "oklch(65% 0.03 245)" }}>{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Photo */}
@@ -133,18 +112,18 @@ function HeroSection() {
             <div className="relative">
               {/* Decorative border */}
               <div
-                className="absolute -inset-4 rounded-2xl opacity-30"
-                style={{ border: "2px solid oklch(74% 0.12 80)" }}
+                className="absolute -inset-6 rounded-3xl opacity-40 blur-2xl"
+                style={{ border: "3px solid oklch(74% 0.12 80)", backgroundColor: "oklch(74% 0.12 80 / 0.1)" }}
               />
               <img
                 src={LAWYER_PHOTO}
                 alt="Dr. Uriel Nascimento - Advogado"
-                className="relative w-80 h-96 lg:w-96 lg:h-[480px] object-cover rounded-2xl shadow-2xl"
-                style={{ objectPosition: "center top" }}
+                className="relative w-96 h-[480px] lg:w-[500px] lg:h-[600px] object-cover rounded-3xl shadow-2xl border-2 transition-all duration-300 hover:shadow-2xl"
+                style={{ objectPosition: "center top", borderColor: "oklch(74% 0.12 80 / 0.3)" }}
               />
               {/* Badge */}
               <div
-                className="absolute -bottom-4 -left-4 px-5 py-3 rounded-xl shadow-xl"
+                className="absolute -bottom-6 -left-6 px-6 py-4 rounded-2xl shadow-2xl border border-white/10 backdrop-blur"
                 style={{ backgroundColor: "oklch(74% 0.12 80)" }}
               >
                 <div className="text-sm font-bold" style={{ color: "oklch(16% 0.065 245)" }}>
@@ -152,6 +131,71 @@ function HeroSection() {
                 </div>
                 <div className="text-xs" style={{ color: "oklch(25% 0.065 245)" }}>Advogado Inscrito</div>
               </div>
+
+              {/* Google Reviews Badge */}
+              <div
+                className="absolute -top-6 -right-6 px-5 py-3 rounded-2xl shadow-2xl border border-white/10 backdrop-blur flex items-center gap-3"
+                style={{ backgroundColor: "oklch(16% 0.065 245 / 0.8)" }}
+              >
+                <div className="text-center">
+                  <div className="text-xl font-bold" style={{ color: "oklch(74% 0.12 80)" }}>
+                    5.0
+                  </div>
+                  <div className="text-xs" style={{ color: "oklch(65% 0.03 245)" }}>★★★★★</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GoogleReviewsSection() {
+  return (
+    <section style={{ backgroundColor: "oklch(20% 0.07 245)" }} className="py-12 border-t border-white/10">
+      <div className="container">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+          {/* Reviews Card */}
+          <div
+            className="flex items-center gap-6 px-8 py-6 rounded-2xl border backdrop-blur transition-all duration-300 hover:border-yellow-400 group"
+            style={{
+              backgroundColor: "oklch(16% 0.065 245 / 0.6)",
+              borderColor: "oklch(74% 0.12 80 / 0.5)",
+            }}
+          >
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2" style={{ color: "oklch(74% 0.12 80)" }}>
+                5.0
+              </div>
+              <div className="text-lg tracking-wider mb-2" style={{ color: "oklch(74% 0.12 80)" }}>
+                ★★★★★
+              </div>
+              <p className="text-sm" style={{ color: "oklch(75% 0.02 245)" }}>
+                Avaliações no Google
+              </p>
+            </div>
+
+            <div className="h-12 w-px" style={{ backgroundColor: "oklch(74% 0.12 80 / 0.3)" }} />
+
+            <div>
+              <p
+                className="font-semibold mb-4 max-w-xs leading-relaxed"
+                style={{ color: "oklch(85% 0.02 245)" }}
+              >
+                Conheça as experiências de nossos clientes e como ajudamos em seus processos legais.
+              </p>
+              <a
+                href="https://www.google.com/search?q=Uriel+Monteiro+Nascimento"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 hover:opacity-90 hover:scale-105"
+                style={{ backgroundColor: "oklch(74% 0.12 80)", color: "oklch(16% 0.065 245)" }}
+              >
+                Ver no Google
+                <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </div>
@@ -210,70 +254,107 @@ function SearchSection() {
 
 function AreasSection() {
   return (
-    <section id="areas" className="py-20 bg-white">
+    <section id="areas" className="py-20" style={{ backgroundColor: "oklch(16% 0.065 245)" }}>
       <div className="container">
+        {/* Header */}
         <div className="text-center mb-14">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-            <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-              Direito da Saúde
-            </span>
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
+          <h2
+            className="text-3xl lg:text-4xl font-bold mb-6"
+            style={{ color: "white", fontFamily: "'Playfair Display', serif" }}
+          >
             Áreas de Atuação
           </h2>
-          <p className="text-base max-w-2xl mx-auto" style={{ color: "oklch(45% 0.04 245)" }}>
-            Advocacia especializada exclusivamente em Direito da Saúde: planos de saúde, SUS,
-            erro médico e seguros. Defendemos seus direitos com expertise e comprometimento.
+          <p style={{ color: "rgba(255, 255, 255, 0.7)" }}>
+            Conheça todas as especialidades do nosso escritório
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {areas.map((area) => (
-            <div
-              key={area.title}
-              className="group p-7 rounded-xl border-2 transition-all duration-300 hover:shadow-xl cursor-pointer"
-              style={{ borderColor: "oklch(90% 0.02 245)" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "oklch(74% 0.12 80)";
-                (e.currentTarget as HTMLElement).style.backgroundColor = "oklch(98% 0.005 245)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "oklch(90% 0.02 245)";
-                (e.currentTarget as HTMLElement).style.backgroundColor = "white";
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300"
-                style={{ backgroundColor: "oklch(96% 0.01 245)" }}
-              >
-                <area.icon className="w-6 h-6" style={{ color: "oklch(16% 0.065 245)" }} />
-              </div>
-              <h3 className="text-lg font-bold mb-2" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-                {area.title}
-              </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "oklch(45% 0.04 245)" }}>
-                {area.desc}
-              </p>
-              <div className="flex items-center gap-1 mt-4 text-sm font-medium" style={{ color: "oklch(74% 0.12 80)" }}>
-                Saiba mais <ArrowRight className="w-4 h-4" />
-              </div>
+        {/* Grid com 7 áreas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {areas.map((area, index) => (
+            <div key={index}>
+              {area.link ? (
+                <Link
+                  to={area.link}
+                  className="group block rounded-xl p-6 transition-all duration-300 hover:scale-105 h-full cursor-pointer"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)"
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+                    el.style.borderColor = "oklch(74% 0.12 80)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+                    el.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <area.icon
+                      className="w-8 h-8 flex-shrink-0 transition-colors duration-300 group-hover:text-yellow-400"
+                      style={{ color: "oklch(74% 0.12 80)" }}
+                    />
+                    <div className="flex-1">
+                      <h4
+                        className="font-bold text-base mb-2 transition-colors duration-300 group-hover:text-yellow-400"
+                        style={{ color: "white" }}
+                      >
+                        {area.title}
+                      </h4>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "rgba(255, 255, 255, 0.7)" }}
+                      >
+                        {area.desc}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div
+                  className="group rounded-xl p-6 transition-all duration-300 hover:scale-105 h-full cursor-pointer"
+                  style={{
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    border: "1px solid rgba(255, 255, 255, 0.1)"
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+                    el.style.borderColor = "oklch(74% 0.12 80)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+                    el.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <area.icon
+                      className="w-8 h-8 flex-shrink-0 transition-colors duration-300 group-hover:text-yellow-400"
+                      style={{ color: "oklch(74% 0.12 80)" }}
+                    />
+                    <div className="flex-1">
+                      <h4
+                        className="font-bold text-base mb-2 transition-colors duration-300 group-hover:text-yellow-400"
+                        style={{ color: "white" }}
+                      >
+                        {area.title}
+                      </h4>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: "rgba(255, 255, 255, 0.7)" }}
+                      >
+                        {area.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all hover:opacity-90"
-            style={{ backgroundColor: "oklch(16% 0.065 245)", color: "white" }}
-          >
-            <MessageCircle className="w-5 h-5" />
-            Consulte seu caso
-          </a>
         </div>
       </div>
     </section>
@@ -353,385 +434,7 @@ function AboutSection() {
   );
 }
 
-function NewsSection() {
-  const { data: newsList, isLoading } = trpc.news.list.useQuery({ limit: 3 });
 
-  return (
-    <section id="noticias" className="py-20 bg-white">
-      <div className="container">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-              <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-                Imprensa
-              </span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-              Últimas Notícias
-            </h2>
-          </div>
-          <Link
-            href="/noticias"
-            className="flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
-            style={{ color: "oklch(16% 0.065 245)" }}
-          >
-            Ver Todas as Notícias <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="rounded-xl overflow-hidden border animate-pulse" style={{ borderColor: "oklch(90% 0.02 245)" }}>
-                <div className="h-48" style={{ backgroundColor: "oklch(93% 0.01 245)" }} />
-                <div className="p-6 space-y-3">
-                  <div className="h-4 rounded" style={{ backgroundColor: "oklch(90% 0.02 245)" }} />
-                  <div className="h-4 w-3/4 rounded" style={{ backgroundColor: "oklch(90% 0.02 245)" }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {newsList?.map((item) => (
-              <Link key={item.id} href={`/noticias/${item.slug}`}>
-                <div
-                  className="group rounded-xl overflow-hidden border-2 transition-all duration-300 hover:shadow-xl cursor-pointer h-full"
-                  style={{ borderColor: "oklch(90% 0.02 245)" }}
-                >
-                  <div
-                    className="h-48 flex items-center justify-center"
-                    style={{ backgroundColor: "oklch(16% 0.065 245)" }}
-                  >
-                    <Scale className="w-16 h-16 opacity-20" style={{ color: "oklch(74% 0.12 80)" }} />
-                  </div>
-                  <div className="p-6">
-                    {item.source && (
-                      <div
-                        className="text-xs font-semibold uppercase tracking-wider mb-3 px-2 py-1 rounded inline-block"
-                        style={{ backgroundColor: "oklch(96% 0.01 245)", color: "oklch(74% 0.12 80)" }}
-                      >
-                        {item.source}
-                      </div>
-                    )}
-                    <h3 className="font-bold text-base mb-3 leading-snug line-clamp-3 group-hover:underline" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed line-clamp-2 mb-4" style={{ color: "oklch(45% 0.04 245)" }}>
-                      {item.excerpt}
-                    </p>
-                    <div className="flex items-center gap-1 text-sm font-semibold" style={{ color: "oklch(74% 0.12 80)" }}>
-                      Ver Conteúdo <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function BlogSection() {
-  const { data: posts, isLoading } = trpc.blog.list.useQuery({ limit: 3 });
-
-  return (
-    <section id="blog" className="py-20" style={{ backgroundColor: "oklch(97% 0.005 245)" }}>
-      <div className="container">
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-              <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-                Blog Jurídico
-              </span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-              Confira Nossos Conteúdos
-            </h2>
-          </div>
-          <Link
-            href="/blog"
-            className="flex items-center gap-2 text-sm font-semibold transition-colors hover:opacity-80"
-            style={{ color: "oklch(16% 0.065 245)" }}
-          >
-            Ver Todo o Conteúdo <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="rounded-xl overflow-hidden border animate-pulse" style={{ borderColor: "oklch(90% 0.02 245)" }}>
-                <div className="p-6 space-y-3">
-                  <div className="h-4 rounded" style={{ backgroundColor: "oklch(90% 0.02 245)" }} />
-                  <div className="h-4 w-3/4 rounded" style={{ backgroundColor: "oklch(90% 0.02 245)" }} />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {posts?.map((post) => (
-              <Link key={post.id} href={`/blog/${post.slug}`}>
-                <div
-                  className="group bg-white rounded-xl overflow-hidden border-2 transition-all duration-300 hover:shadow-xl cursor-pointer h-full flex flex-col"
-                  style={{ borderColor: "oklch(90% 0.02 245)" }}
-                >
-                  <div
-                    className="h-3 w-full"
-                    style={{ backgroundColor: "oklch(74% 0.12 80)" }}
-                  />
-                  <div className="p-6 flex-1 flex flex-col">
-                    {post.category && (
-                      <div
-                        className="text-xs font-semibold uppercase tracking-wider mb-3 px-2 py-1 rounded inline-block self-start"
-                        style={{ backgroundColor: "oklch(96% 0.01 245)", color: "oklch(16% 0.065 245)" }}
-                      >
-                        {post.category}
-                      </div>
-                    )}
-                    <h3 className="font-bold text-base mb-3 leading-snug line-clamp-3 group-hover:underline flex-1" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-                      {post.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed line-clamp-3 mb-4" style={{ color: "oklch(45% 0.04 245)" }}>
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-1 text-sm font-semibold mt-auto" style={{ color: "oklch(74% 0.12 80)" }}>
-                      Ver Conteúdo <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function BrazilSection() {
-  return (
-    <section className="py-16" style={{ backgroundColor: "oklch(16% 0.065 245)" }}>
-      <div className="container">
-        <div className="flex flex-col lg:flex-row items-center gap-10 text-center lg:text-left">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-3 justify-center lg:justify-start">
-              <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-              <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-                Atendimento Nacional
-              </span>
-            </div>
-            <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Atendemos em Todo o Brasil
-            </h2>
-            <p className="text-base mb-6" style={{ color: "oklch(75% 0.03 245)" }}>
-              Com processos totalmente digitais, oferecemos suporte jurídico sem barreiras, 
-              independentemente de onde você esteja. Consultas online e acompanhamento 
-              processual remoto para todo o território nacional.
-            </p>
-          </div>
-          <div className="flex gap-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-7 py-4 rounded-lg font-semibold transition-all hover:opacity-90"
-              style={{ backgroundColor: "oklch(74% 0.12 80)", color: "oklch(16% 0.065 245)" }}
-            >
-              <MessageCircle className="w-5 h-5" />
-              Contato
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FaqSection() {
-  const { data: faqs, isLoading } = trpc.faq.list.useQuery();
-  const [openId, setOpenId] = useState<number | null>(null);
-
-  return (
-    <section id="faq" className="py-20 bg-white">
-      <div className="container">
-        <div className="text-center mb-14">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-            <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-              Dúvidas
-            </span>
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-            Perguntas Frequentes
-          </h2>
-          <p className="text-base max-w-xl mx-auto" style={{ color: "oklch(45% 0.04 245)" }}>
-            Encontre respostas para as dúvidas mais comuns sobre direitos e serviços jurídicos.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto space-y-3">
-          {isLoading ? (
-            [1, 2, 3, 4].map((i) => (
-              <div key={i} className="h-16 rounded-xl animate-pulse" style={{ backgroundColor: "oklch(93% 0.01 245)" }} />
-            ))
-          ) : (
-            faqs?.map((faq) => (
-              <div
-                key={faq.id}
-                className="rounded-xl border-2 overflow-hidden transition-all duration-200"
-                style={{ borderColor: openId === faq.id ? "oklch(74% 0.12 80)" : "oklch(90% 0.02 245)" }}
-              >
-                <button
-                  className="w-full flex items-center justify-between p-5 text-left transition-colors"
-                  style={{ backgroundColor: openId === faq.id ? "oklch(97% 0.005 245)" : "white" }}
-                  onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
-                >
-                  <span className="font-semibold text-sm pr-4" style={{ color: "oklch(16% 0.065 245)" }}>
-                    {faq.question}
-                  </span>
-                  {openId === faq.id
-                    ? <ChevronUp className="w-5 h-5 flex-shrink-0" style={{ color: "oklch(74% 0.12 80)" }} />
-                    : <ChevronDown className="w-5 h-5 flex-shrink-0" style={{ color: "oklch(45% 0.04 245)" }} />
-                  }
-                </button>
-                {openId === faq.id && (
-                  <div className="px-5 pb-5" style={{ backgroundColor: "oklch(97% 0.005 245)" }}>
-                    <p className="text-sm leading-relaxed" style={{ color: "oklch(35% 0.04 245)" }}>
-                      {faq.answer}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function NewsletterSection() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [consentPrivacy, setConsentPrivacy] = useState(false);
-  const [consentMarketing, setConsentMarketing] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState("");
-
-  const subscribe = trpc.newsletter.subscribe.useMutation({
-    onSuccess: () => { setSuccess(true); setName(""); setEmail(""); setConsentPrivacy(false); setConsentMarketing(false); },
-    onError: (err) => setError(err.message),
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    subscribe.mutate({ name, email, consentPrivacy, consentMarketing });
-  };
-
-  return (
-    <section id="contato" className="py-20" style={{ backgroundColor: "oklch(97% 0.005 245)" }}>
-      <div className="container">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-            <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-              Newsletter
-            </span>
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-          </div>
-          <h2 className="text-3xl font-bold mb-3" style={{ color: "oklch(16% 0.065 245)", fontFamily: "'Playfair Display', serif" }}>
-            Fique por Dentro das Atualizações
-          </h2>
-          <p className="text-base mb-8" style={{ color: "oklch(45% 0.04 245)" }}>
-            Inscreva-se para receber nossos artigos jurídicos, notícias do meio e 
-            informações relevantes sobre seus direitos.
-          </p>
-
-          {success ? (
-            <div className="p-6 rounded-xl text-center" style={{ backgroundColor: "oklch(96% 0.05 155)", border: "1px solid oklch(74% 0.12 80)" }}>
-              <CheckCircle className="w-12 h-12 mx-auto mb-3" style={{ color: "oklch(74% 0.12 80)" }} />
-              <p className="font-semibold" style={{ color: "oklch(16% 0.065 245)" }}>Inscrição realizada com sucesso!</p>
-              <p className="text-sm mt-1" style={{ color: "oklch(35% 0.04 245)" }}>Em breve você receberá nossos conteúdos.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="Seu nome"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 rounded-lg text-sm outline-none focus:ring-2 border"
-                  style={{ borderColor: "oklch(85% 0.02 245)", color: "oklch(16% 0.065 245)" }}
-                />
-                <input
-                  type="email"
-                  placeholder="Seu e-mail *"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 rounded-lg text-sm outline-none focus:ring-2 border"
-                  style={{ borderColor: "oklch(85% 0.02 245)", color: "oklch(16% 0.065 245)" }}
-                />
-              </div>
-
-              <div className="space-y-3 text-left">
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={consentPrivacy}
-                    onChange={(e) => setConsentPrivacy(e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded flex-shrink-0"
-                    required
-                  />
-                  <span className="text-sm" style={{ color: "oklch(35% 0.04 245)" }}>
-                    Ao informar meus dados, eu concordo com a{" "}
-                    <a href="/politica-de-privacidade" className="underline" style={{ color: "oklch(16% 0.065 245)" }}>
-                      Política de Privacidade
-                    </a>. *
-                  </span>
-                </label>
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={consentMarketing}
-                    onChange={(e) => setConsentMarketing(e.target.checked)}
-                    className="mt-1 w-4 h-4 rounded flex-shrink-0"
-                  />
-                  <span className="text-sm" style={{ color: "oklch(35% 0.04 245)" }}>
-                    Eu concordo em receber comunicações e conteúdos personalizados de acordo com meus interesses.
-                  </span>
-                </label>
-              </div>
-
-              {error && (
-                <p className="text-sm text-red-600">{error}</p>
-              )}
-
-              <button
-                type="submit"
-                disabled={subscribe.isPending}
-                className="w-full py-4 rounded-lg font-semibold text-base transition-all hover:opacity-90 disabled:opacity-50"
-                style={{ backgroundColor: "oklch(16% 0.065 245)", color: "white" }}
-              >
-                {subscribe.isPending ? "Cadastrando..." : "Cadastrar"}
-              </button>
-            </form>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const REVIEWS = [
   {
@@ -800,42 +503,28 @@ function ReviewsSection() {
     <section className="py-20" style={{ backgroundColor: "oklch(16% 0.065 245)" }}>
       <div className="container">
         <div className="text-center mb-14">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-            <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-              Avaliações
-            </span>
-            <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+          <h2 className="text-3xl lg:text-4xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
             O que nossos clientes dizem
           </h2>
-          {/* Google rating summary */}
-          <div className="flex items-center justify-center gap-3 mt-4">
-            <div className="flex items-center gap-1">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              <span className="text-2xl font-bold text-white">5.0</span>
-            </div>
-            <div>
-              <StarRating rating={5} />
-              <p className="text-xs mt-1" style={{ color: "oklch(65% 0.03 245)" }}>Avaliado no Google</p>
-            </div>
-          </div>
+          <p className="text-base mt-4" style={{ color: "oklch(75% 0.03 245)" }}>
+            Avaliações reais de clientes satisfeitos com nossos serviços
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {REVIEWS.map((review, i) => (
             <div
               key={i}
-              className="rounded-xl p-6 flex flex-col gap-4"
+              className="rounded-xl p-6 flex flex-col gap-4 transition-all duration-300 hover:scale-105"
               style={{ backgroundColor: "oklch(20% 0.07 245)", border: "1px solid oklch(25% 0.06 245)" }}
             >
-              <div className="flex items-center gap-3">
+              <StarRating rating={review.rating} />
+              
+              <p className="text-sm leading-relaxed flex-1" style={{ color: "oklch(75% 0.03 245)" }}>
+                "{review.text}"
+              </p>
+              
+              <div className="flex items-center gap-3 pt-2 border-t" style={{ borderColor: "oklch(25% 0.06 245)" }}>
                 <div
                   className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0"
                   style={{ backgroundColor: "oklch(74% 0.12 80)", color: "oklch(16% 0.065 245)" }}
@@ -846,34 +535,9 @@ function ReviewsSection() {
                   <div className="font-semibold text-white text-sm">{review.name}</div>
                   <div className="text-xs" style={{ color: "oklch(55% 0.03 245)" }}>{review.date}</div>
                 </div>
-                {/* Google G logo */}
-                <div className="ml-auto">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                  </svg>
-                </div>
               </div>
-              <StarRating rating={review.rating} />
-              <p className="text-sm leading-relaxed" style={{ color: "oklch(75% 0.03 245)" }}>
-                “{review.text}”
-              </p>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <a
-            href="https://www.google.com/search?q=Uriel+Nascimento+Sociedade+de+Advocacia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90"
-            style={{ backgroundColor: "oklch(74% 0.12 80)", color: "oklch(16% 0.065 245)" }}
-          >
-            Ver todas as avaliações no Google
-          </a>
         </div>
       </div>
     </section>
@@ -884,15 +548,11 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <GoogleReviewsSection />
       <SearchSection />
       <AreasSection />
       <AboutSection />
       <ReviewsSection />
-      <NewsSection />
-      <BrazilSection />
-      <BlogSection />
-      <FaqSection />
-      <NewsletterSection />
     </div>
   );
 }
