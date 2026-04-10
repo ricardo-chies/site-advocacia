@@ -1,19 +1,19 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
+import { Toaster } from "../components/ui/sonner";
+import { TooltipProvider } from "../components/ui/tooltip";
+import NotFound from "../pages/NotFound";
 import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import WhatsAppButton from "./components/WhatsAppButton";
-import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Noticias from "./pages/Noticias";
-import NoticiaPost from "./pages/NoticiaPost";
-import Admin from "./pages/Admin";
-import AdminLogin from "./pages/AdminLogin";
+import ErrorBoundary from "../components/common/ErrorBoundary";
+import { ThemeProvider } from "../contexts/ThemeContext";
+import Navbar from "../components/common/Navbar";
+import Footer from "../components/common/Footer";
+import WhatsAppButton from "../components/common/WhatsAppButton";
+import Home from "../pages/Home";
+import Blog from "../pages/Blog";
+import BlogPost from "../pages/BlogPost";
+import Noticias from "../pages/Noticias";
+import NoticiaPost from "../pages/NoticiaPost";
+import Admin from "../pages/Admin";
+import AdminLogin from "../pages/AdminLogin";
 
 function Router() {
   return (
