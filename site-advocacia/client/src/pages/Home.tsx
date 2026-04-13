@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { trpc } from "@/lib/trpc";
 import {
   Scale, HeartPulse, Stethoscope, ShieldCheck, FileText, Hospital, Syringe,
-  ChevronDown, ChevronUp, ArrowRight, Search, MessageCircle,
+  ArrowRight, Search, MessageCircle,
   CheckCircle, Award, Clock, Shield
 } from "lucide-react";
 
@@ -20,7 +19,8 @@ const areas = [
   {
     icon: HeartPulse,
     title: "Ação Contra Plano de Saúde",
-    desc: "Negativa de cobertura, cancelamento indevido, reajustes abusivos e recusa de procedimentos médicos pelo plano de saúde."
+    desc: "Negativa de cobertura, cancelamento indevido, reajustes abusivos e recusa de procedimentos médicos pelo plano de saúde.",
+    link: "/areas/plano-de-saude"
   },
   {
     icon: Stethoscope,

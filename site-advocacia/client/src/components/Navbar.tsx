@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Scale, Lock } from "lucide-react";
+import { Menu, X, Lock } from "lucide-react";
 import { AreasDropdown } from "./AreasDropdown";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663314417964/FL8EyJ9BRANQkvye7FFgue/logo-uriel_d175ea8f.png";
