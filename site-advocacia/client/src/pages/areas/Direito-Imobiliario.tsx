@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -9,14 +9,75 @@ import {
   Users,
   Hammer,
   MapPin,
-  Banknote
+  Banknote,
+  LucideIcon
 } from "lucide-react";
+
+// --- DEFINIÇÃO DOS DADOS (Problems e Services precisam estar definidos antes do uso) ---
+
+interface ProblemItem {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+const problems: ProblemItem[] = [
+  { icon: Clock, title: "Atraso na Entrega", desc: "Construtora não entrega o imóvel na data estipulada, causando prejuízos com aluguéis" },
+  { icon: FileWarning, title: "Vícios Construtivos", desc: "Infiltrações, rachaduras, pisos soltos ou acabamentos inferiores ao padrão vendido" },
+  { icon: Banknote, title: "Retenção Abusiva", desc: "Multas exorbitantes ao tentar cancelar a compra do imóvel na planta" },
+  { icon: Home, title: "Despejo Ilegal", desc: "Tentativas de reintegração de posse ou despejo sem o devido processo legal ou justa causa" },
+  { icon: Users, title: "Herança e Inventário", desc: "Partilha de bens imóveis complexa e disputas familiares sobre propriedades" },
+  { icon: FileKey, title: "Contratos Fraudulentos", desc: "Golpes em compra e venda, duplicidade de vendas ou documentos falsificados" }
+];
+
+interface ServiceItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+const services: ServiceItem[] = [
+  {
+    icon: "🔍",
+    title: "Due Diligence",
+    desc: "Análise minuciosa da documentação do imóvel e dos vendedores antes da compra para evitar golpes e dívidas ocultas"
+  },
+  {
+    icon: "⚖️",
+    title: "Ações Possessórias",
+    desc: "Defesa ou reintegração de posse rápida e eficaz contra invasões, esbulhos ou turbações"
+  },
+  {
+    icon: "📝",
+    title: "Contratos Blindados",
+    desc: "Elaboração e revisão de contratos de compra e venda, locação e permuta para máxima segurança jurídica"
+  },
+  {
+    icon: "🏢",
+    title: "Direito Condominial",
+    desc: "Assessoria para síndicos e condôminos em cobranças de inadimplentes, assembleias e conflitos internos"
+  }
+];
+
+// Interface para o conteúdo das abas
+interface TabContent {
+  title: string;
+  problem: string;
+  details: string[];
+  consequence: string;
+}
+
+interface TabItem {
+  label: string;
+  icon: LucideIcon;
+  content: TabContent;
+}
 
 export default function DireitoImobiliario() {
   const [activeTab, setActiveTab] = useState(0);
 
-  // Dados das Abas Principais - Conteúdo Imobiliário
-  const tabs = [
+  // Dados das Abas Principais
+  const tabs: TabItem[] = [
     {
       label: "Vício na Obra",
       icon: Hammer,
@@ -81,41 +142,16 @@ export default function DireitoImobiliario() {
         consequence: "Obtenção da propriedade definitiva do imóvel através de sentença judicial ou ata notarial, garantindo a segurança patrimonial da família."
       }
     }
-    ];
-
-  // Cards de Problemas Comuns
-  const problems = [
-    { icon: Clock, title: "Atraso na Entrega", desc: "Construtora não entrega o imóvel na data estipulada, causando prejuízos com aluguéis" },
-    { icon: FileWarning, title: "Vícios Construtivos", desc: "Infiltrações, rachaduras, pisos soltos ou acabamentos inferiores ao padrão vendido" },
-    { icon: Banknote, title: "Retenção Abusiva", desc: "Multas exorbitantes ao tentar cancelar a compra do imóvel na planta" },
-    { icon: Home, title: "Despejo Ilegal", desc: "Tentativas de reintegração de posse ou despejo sem o devido processo legal ou justa causa" },
-    { icon: Users, title: "Herança e Inventário", desc: "Partilha de bens imóveis complexa e disputas familiares sobre propriedades" },
-    { icon: FileKey, title: "Contratos Fraudulentos", desc: "Golpes em compra e venda, duplicidade de vendas ou documentos falsificados" }
   ];
 
-  // Serviços Oferecidos
-  const services = [
-    {
-      icon: "🔍",
-      title: "Due Diligence",
-      desc: "Análise minuciosa da documentação do imóvel e dos vendedores antes da compra para evitar golpes e dívidas ocultas"
-    },
-    {
-      icon: "⚖️",
-      title: "Ações Possessórias",
-      desc: "Defesa ou reintegração de posse rápida e eficaz contra invasões, esbulhos ou turbações"
-    },
-    {
-      icon: "📝",
-      title: "Contratos Blindados",
-      desc: "Elaboração e revisão de contratos de compra e venda, locação e permuta para máxima segurança jurídica"
-    },
-    {
-      icon: "🏢",
-      title: "Direito Condominial",
-      desc: "Assessoria para síndicos e condôminos em cobranças de inadimplentes, assembleias e conflitos internos"
-    }
-  ];
+  // --- LÓGICA DO CARROSSEL AUTOMÁTICO ---
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % tabs.length);
+    }, 3000); // Muda a cada 3 segundos
+
+    return () => clearInterval(intervalId);
+  }, [tabs.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -141,7 +177,6 @@ export default function DireitoImobiliario() {
     <div style={{ backgroundColor: "oklch(16% 0.065 245)" }} className="min-h-screen text-white">
       {/* Hero Section */}
       <section className="relative min-h-[95vh] flex items-center justify-center overflow-hidden">
-        {/* Background with overlay */}
         <div
           className="absolute inset-0"
           style={{
@@ -151,16 +186,12 @@ export default function DireitoImobiliario() {
             backgroundAttachment: "fixed",
           }}
         />
-
-        {/* Gradient Overlay */}
         <div
           className="absolute inset-0"
           style={{
             background: "linear-gradient(135deg, oklch(16% 0.065 245 / 0.95) 0%, oklch(18% 0.065 245 / 0.85) 100%)",
           }}
         />
-
-        {/* Decorative elements - Mantido Dourado/Amarelo */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-b from-yellow-500 to-transparent opacity-5 blur-3xl rounded-full" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-t from-yellow-500 to-transparent opacity-5 blur-3xl rounded-full" />
 
@@ -171,7 +202,6 @@ export default function DireitoImobiliario() {
             transition={{ duration: 0.8 }}
             className="space-y-6"
           >
-            {/* Badge */}
             <div className="flex items-center justify-center gap-2">
               <div className="h-px w-12" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
               <span
@@ -187,7 +217,6 @@ export default function DireitoImobiliario() {
               <div className="h-px w-12" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
             </div>
 
-            {/* Title */}
             <h1
               className="text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
               style={{ fontFamily: "'Playfair Display', serif" }}
@@ -197,7 +226,6 @@ export default function DireitoImobiliario() {
               <span style={{ color: "oklch(74% 0.12 80)" }}>Imobiliário</span>
             </h1>
 
-            {/* Subtitle */}
             <p
               className="text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed"
               style={{ color: "oklch(80% 0.03 245)" }}
@@ -205,7 +233,6 @@ export default function DireitoImobiliario() {
               Segurança jurídica para o seu patrimônio. Atuação especializada em compra e venda, regularização de imóveis, disputas contratuais e defesa contra abusos de construtoras.
             </p>
 
-            {/* CTA */}
             <div className="flex flex-wrap gap-4 justify-center pt-8">
               <a
                 href="#problemas"
@@ -227,7 +254,6 @@ export default function DireitoImobiliario() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 3, repeat: Infinity }}
@@ -448,12 +474,12 @@ export default function DireitoImobiliario() {
                     backgroundColor: "oklch(16% 0.065 245 / 0.5)",
                   }}
                   onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(74% 0.12 80)";
                     el.style.backgroundColor = "oklch(25% 0.08 245)";
                   }}
                   onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(25% 0.06 245)";
                     el.style.backgroundColor = "oklch(16% 0.065 245 / 0.5)";
                   }}
@@ -518,11 +544,11 @@ export default function DireitoImobiliario() {
                   className="p-6 rounded-2xl border-2 transition-all duration-300 hover:border-yellow-400 hover:shadow-xl hover:shadow-yellow-400/10 group cursor-pointer h-full flex flex-col"
                   style={{ borderColor: "oklch(25% 0.06 245)", backgroundColor: "oklch(18% 0.065 245)" }}
                   onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(74% 0.12 80)";
                   }}
                   onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(25% 0.06 245)";
                   }}
                 >

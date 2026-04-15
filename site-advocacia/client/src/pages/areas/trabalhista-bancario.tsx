@@ -1,11 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"; // <--- Adicionado useEffect
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Award, TrendingUp, AlertCircle, Users, FileText, Scale } from "lucide-react";
+import { 
+  ArrowRight, 
+  CheckCircle, 
+  Award, 
+  TrendingUp, 
+  AlertCircle, 
+  Users, 
+  FileText, 
+  Scale,
+  LucideIcon // <--- Importado para tipagem
+} from "lucide-react";
+
+// --- INTERFACES PARA TIPOSCAGEM (Corrige erros TS) ---
+
+interface TabContent {
+  title: string;
+  problem: string;
+  details: string[];
+  consequence: string;
+}
+
+interface TabItem {
+  label: string;
+  icon: LucideIcon;
+  content: TabContent;
+}
+
+interface ProblemItem {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+interface ServiceItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
 
 export default function TrabalhistaBancario() {
   const [activeTab, setActiveTab] = useState(0);
 
-  const tabs = [
+  const tabs: TabItem[] = [
     {
       label: "Horas Extras",
       icon: TrendingUp,
@@ -75,7 +112,7 @@ export default function TrabalhistaBancario() {
     }
   ];
 
-  const problems = [
+  const problems: ProblemItem[] = [
     { icon: TrendingUp, title: "Horas Extras Não Pagas", desc: "Cobrança de jornada além das 6 horas permitidas sem compensação adequada" },
     { icon: AlertCircle, title: "Assédio Moral e Metas Abusivas", desc: "Pressão psicológica extrema, humilhação e ambiente hostil gerado por metas irreais" },
     { icon: Scale, title: "Equiparação Salarial", desc: "Recebimento de salário inferior ao de colega que exerce função idêntica" },
@@ -84,7 +121,7 @@ export default function TrabalhistaBancario() {
     { icon: Award, title: "Verbas Rescisórias Incorretas", desc: "Cálculo inadequado ou não pagamento de valores devidos na rescisão" }
   ];
 
-  const services = [
+  const services: ServiceItem[] = [
     {
       icon: "📋",
       title: "Análise Completa do Contrato",
@@ -106,6 +143,15 @@ export default function TrabalhistaBancario() {
       desc: "Proteção integral dos direitos do bancário em negociações e processos judiciais"
     }
   ];
+
+  // --- LÓGICA DO CARROSSEL AUTOMÁTICO ---
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % tabs.length);
+    }, 3000); // Muda a cada 3 segundos
+
+    return () => clearInterval(intervalId);
+  }, [tabs.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -438,12 +484,12 @@ export default function TrabalhistaBancario() {
                     backgroundColor: "oklch(16% 0.065 245 / 0.5)",
                   }}
                   onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(74% 0.12 80)";
                     el.style.backgroundColor = "oklch(25% 0.08 245)";
                   }}
                   onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(25% 0.06 245)";
                     el.style.backgroundColor = "oklch(16% 0.065 245 / 0.5)";
                   }}
@@ -508,11 +554,11 @@ export default function TrabalhistaBancario() {
                   className="p-6 rounded-2xl border-2 transition-all duration-300 hover:border-yellow-400 hover:shadow-xl hover:shadow-yellow-400/10 group cursor-pointer h-full flex flex-col"
                   style={{ borderColor: "oklch(25% 0.06 245)", backgroundColor: "oklch(18% 0.065 245)" }}
                   onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(74% 0.12 80)";
                   }}
                   onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(25% 0.06 245)";
                   }}
                 >

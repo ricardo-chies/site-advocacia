@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"; // <--- Adicionado useEffect
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -9,13 +9,41 @@ import {
   Activity,
   Clock,
   UserCheck,
+  LucideIcon // <--- Importado para tipagem
 } from "lucide-react";
+
+// --- INTERFACES PARA TIPOSCAGEM (Corrige erros TS) ---
+
+interface TabContent {
+  title: string;
+  problem: string;
+  details: string[];
+  consequence: string;
+}
+
+interface TabItem {
+  label: string;
+  icon: LucideIcon;
+  content: TabContent;
+}
+
+interface ProblemItem {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+}
+
+interface ServiceItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
 
 export default function DireitoSaude() {
   const [activeTab, setActiveTab] = useState(0);
 
   // Dados das Abas Principais - Conteúdo de Saúde
-  const tabs = [
+  const tabs: TabItem[] = [
     {
       label: "Negativa de Cobertura",
       icon: FileWarning,
@@ -83,7 +111,7 @@ export default function DireitoSaude() {
   ];
 
   // Cards de Problemas Comuns
-  const problems = [
+  const problems: ProblemItem[] = [
     { icon: HeartPulse, title: "Negativa de Cirurgias", desc: "Recusa em autorizar procedimentos cirúrgicos essenciais indicados pelo médico assistente" },
     { icon: Pill, title: "Medicamentos de Alto Custo", desc: "Negativa de fornecimento de remédios caros, importados ou fora do rol da ANS" },
     { icon: Activity, title: "Reajuste por Idade", desc: "Aumentos abusivos na mensalidade ao completar 59 anos ou mudar de faixa etária" },
@@ -93,7 +121,7 @@ export default function DireitoSaude() {
   ];
 
   // Serviços Oferecidos
-  const services = [
+  const services: ServiceItem[] = [
     {
       icon: "📋",
       title: "Análise de Contrato",
@@ -115,6 +143,15 @@ export default function DireitoSaude() {
       desc: "Atuação especializada contra reajustes abusivos e cancelamentos ilegais de planos de saúde para maiores de 60 anos"
     }
   ];
+
+  // --- LÓGICA DO CARROSSEL AUTOMÁTICO ---
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % tabs.length);
+    }, 3000); // Muda a cada 3 segundos
+
+    return () => clearInterval(intervalId);
+  }, [tabs.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -447,12 +484,12 @@ export default function DireitoSaude() {
                     backgroundColor: "oklch(16% 0.065 245 / 0.5)",
                   }}
                   onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(74% 0.12 80)";
                     el.style.backgroundColor = "oklch(25% 0.08 245)";
                   }}
                   onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(25% 0.06 245)";
                     el.style.backgroundColor = "oklch(16% 0.065 245 / 0.5)";
                   }}
@@ -517,11 +554,11 @@ export default function DireitoSaude() {
                   className="p-6 rounded-2xl border-2 transition-all duration-300 hover:border-yellow-400 hover:shadow-xl hover:shadow-yellow-400/10 group cursor-pointer h-full flex flex-col"
                   style={{ borderColor: "oklch(25% 0.06 245)", backgroundColor: "oklch(18% 0.065 245)" }}
                   onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(74% 0.12 80)";
                   }}
                   onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                    const el = e.currentTarget;
                     el.style.borderColor = "oklch(25% 0.06 245)";
                   }}
                 >
