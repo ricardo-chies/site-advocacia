@@ -39,7 +39,7 @@ const areas: AreaItem[] = [
     link: "/areas/plano-de-saude"
   },
   {
-    icon: HomeIcon, // Usando o ícone renomeado
+    icon: HomeIcon,
     title: "Direito Imobiliário",
     desc: "Atuação em compra e venda de imóveis, contratos, regularização, usucapião e resolução de conflitos imobiliários.",
     link: "/areas/direito-imobiliario"
@@ -89,7 +89,7 @@ function HeroSection() {
             </h1>
 
             <p className="text-lg mb-8 leading-relaxed" style={{ color: "oklch(80% 0.03 245)" }}>
-              Especialistas em Direito da Saúde e Direito Trabalhista Bancário: atuação em planos de saúde, erro médico, SUS, seguros e na defesa de bancários contra horas extras indevidas, assédio e irregularidades trabalhistas. Defenda seus direitos com quem entende profundamente da área.
+             Especialistas em Direito da Saúde, Direito Trabalhista Bancário e Direito Imobiliário: atuação em planos de saúde, erro médico, SUS, seguros; defesa de bancários contra horas extras indevidas, assédio e irregularidades trabalhistas; e segurança jurídica em compra e venda, regularização de imóveis, usucapião e conflitos contratuais. Defenda seus direitos e seu patrimônio com quem entende profundamente da área.
             </p>
 
             <div className="flex flex-wrap gap-4">
