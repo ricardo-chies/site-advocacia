@@ -82,7 +82,10 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            
+            {/* Dropdown de Áreas (Desktop) */}
             <AreasDropdown />
+
             {navLinks.slice(1).map((link) => (
               <a
                 key={link.href}
@@ -166,20 +169,21 @@ export default function Navbar() {
                     • Trabalhista Bancário
                   </a>
                 </Link>
-                <Link href="/areas/trabalhista">
+                <Link href="/areas/plano-de-saude">
                   <a
                     className="block text-sm transition-colors"
                     style={{ color: "oklch(85% 0.02 245)" }}
                   >
-                    • Direito Trabalhista
+                    • Plano de Saúde
                   </a>
                 </Link>
-                <Link href="/areas/previdenciario">
+                {/* ADICIONADO AQUI: Direito Imobiliário no Mobile */}
+                <Link href="/areas/direito-imobiliario">
                   <a
                     className="block text-sm transition-colors"
                     style={{ color: "oklch(85% 0.02 245)" }}
                   >
-                    • Previdenciário
+                    • Direito Imobiliário
                   </a>
                 </Link>
               </div>

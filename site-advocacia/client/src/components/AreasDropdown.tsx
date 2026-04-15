@@ -7,14 +7,19 @@ export function AreasDropdown() {
 
   const areas = [
     {
-      name: "Trabalhista Bancário",
+      name: "Direito Trabalhista Bancário",
       desc: "Defesa especializada para bancários",
       href: "/areas/trabalhista-bancario",
     },
     {
-      name: "Plano de Saúde",
+      name: "Direito de Saúde",
       desc: "Ações contra negativas e abusos",
       href: "/areas/plano-de-saude",
+    },
+     {
+      name: "Direito Imobiliário",
+      desc: "Compra, venda, usucapião e contratos",
+      href: "/areas/direito-imobiliario",
     },
   ];
 

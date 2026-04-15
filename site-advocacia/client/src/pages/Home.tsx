@@ -1,51 +1,48 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import {
-  Scale, HeartPulse, Stethoscope, ShieldCheck, FileText, Hospital, Syringe,
-  ArrowRight, Search, MessageCircle,
-  CheckCircle, Award, Clock, Shield
+  Scale, 
+  HeartPulse, 
+  Home as HomeIcon, 
+  ArrowRight, 
+  Search, 
+  MessageCircle,
+  CheckCircle, 
+  Award, 
+  Clock, 
+  Shield,
+  LucideIcon,
 } from "lucide-react";
 
 const LAWYER_PHOTO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663314417964/FL8EyJ9BRANQkvye7FFgue/advogado-uriel_4967a405.jpeg";
 const WHATSAPP_URL = "https://wa.me/5511984708027?text=Olá! Gostaria de saber mais sobre os serviços do escritório Uriel Monteiro Nascimento Sociedade Unipessoal de Advocacia.";
 
-const areas = [
+// Interface para as áreas
+interface AreaItem {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  link: string;
+}
+
+const areas: AreaItem[] = [
   {
     icon: Scale,
-    title: "Direito Trabalhista Bancário",
+    title: "Direito Trabalhista",
     desc: "Defesa especializada para bancários contra abusos trabalhistas, incluindo horas extras, assédio moral e irregularidades contratuais.",
     link: "/areas/trabalhista-bancario"
   },
   {
     icon: HeartPulse,
-    title: "Ação Contra Plano de Saúde",
+    title: "Direito da Saúde",
     desc: "Negativa de cobertura, cancelamento indevido, reajustes abusivos e recusa de procedimentos médicos pelo plano de saúde.",
     link: "/areas/plano-de-saude"
   },
   {
-    icon: Stethoscope,
-    title: "Indenização por Erro Médico",
-    desc: "Responsabilização de médicos, hospitais e clínicas por negligência, imprudência ou imperícia no atendimento."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Indenização de Seguros em Geral",
-    desc: "Recusa indevida de sinistros, cobranças abusivas e descumprimento de contratos de seguro de saúde e vida."
-  },
-  {
-    icon: Hospital,
-    title: "Ação Contra o SUS",
-    desc: "Obrigação do Estado ao fornecimento de medicamentos, cirurgias, tratamentos e leitos hospitalares pelo sistema público."
-  },
-  {
-    icon: Syringe,
-    title: "Fornecimento de Medicamentos",
-    desc: "Ações judiciais para garantir o fornecimento de medicamentos de alto custo, órfãos ou não disponíveis na rede pública."
-  },
-  {
-    icon: FileText,
-    title: "Direito Médico e Hospitalar",
-    desc: "Defesa de profissionais de saúde, processos no CRM, contratos hospitalares e questões regulatórias da área da saúde."
+    icon: HomeIcon, // Usando o ícone renomeado
+    title: "Direito Imobiliário",
+    desc: "Atuação em compra e venda de imóveis, contratos, regularização, usucapião e resolução de conflitos imobiliários.",
+    link: "/areas/direito-imobiliario"
   },
 ];
 
@@ -206,10 +203,13 @@ function GoogleReviewsSection() {
 
 function SearchSection() {
   const [search, setSearch] = useState("");
+  
+  // Tipagem correta do evento
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (search.trim()) window.location.href = `/blog?search=${encodeURIComponent(search)}`;
   };
+
   return (
     <section className="py-10" style={{ backgroundColor: "oklch(20% 0.07 245)" }}>
       <div className="container">
@@ -269,7 +269,7 @@ function AreasSection() {
           </p>
         </div>
 
-        {/* Grid com 7 áreas */}
+        {/* Grid com áreas */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {areas.map((area, index) => (
             <div key={index}>
@@ -281,13 +281,15 @@ function AreasSection() {
                     backgroundColor: "rgba(255, 255, 255, 0.05)",
                     border: "1px solid rgba(255, 255, 255, 0.1)"
                   }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                  // CORREÇÃO AQUI: Mudado de HTMLDivElement para HTMLAnchorElement
+                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    const el = e.currentTarget;
                     el.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
                     el.style.borderColor = "oklch(74% 0.12 80)";
                   }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                  // CORREÇÃO AQUI: Mudado de HTMLDivElement para HTMLAnchorElement
+                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    const el = e.currentTarget;
                     el.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
                     el.style.borderColor = "rgba(255, 255, 255, 0.1)";
                   }}
@@ -314,19 +316,20 @@ function AreasSection() {
                   </div>
                 </Link>
               ) : (
+                // Este bloco 'else' usa uma div normal, então mantém HTMLDivElement
                 <div
                   className="group rounded-xl p-6 transition-all duration-300 hover:scale-105 h-full cursor-pointer"
                   style={{
                     backgroundColor: "rgba(255, 255, 255, 0.05)",
                     border: "1px solid rgba(255, 255, 255, 0.1)"
                   }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                  onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
+                    const el = e.currentTarget;
                     el.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
                     el.style.borderColor = "oklch(74% 0.12 80)";
                   }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLElement;
+                  onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
+                    const el = e.currentTarget;
                     el.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
                     el.style.borderColor = "rgba(255, 255, 255, 0.1)";
                   }}
@@ -434,9 +437,15 @@ function AboutSection() {
   );
 }
 
+interface Review {
+  name: string;
+  rating: number;
+  date: string;
+  text: string;
+  initials: string;
+}
 
-
-const REVIEWS = [
+const REVIEWS: Review[] = [
   {
     name: "Karina Secco",
     rating: 5,
@@ -481,6 +490,7 @@ const REVIEWS = [
   },
 ];
 
+// Tipagem da prop rating
 function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-0.5">
