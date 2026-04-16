@@ -18,7 +18,6 @@ import TrabalhistaBancario from "./pages/areas/trabalhista-bancario";
 import Trabalhista from "./pages/areas/trabalhista";
 import Previdenciario from "./pages/areas/previdenciario";
 import PlanoDeSaude from "./pages/areas/plano-de-saude";
-// 1. Importe o novo componente aqui (ajuste o caminho se necessário)
 import DireitoImobiliario from "./pages/areas/Direito-Imobiliario";
 
 

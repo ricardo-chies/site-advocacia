@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react"; // <--- Adicionado useEffect
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
-  ArrowRight, 
-  CheckCircle, 
-  Award, 
+  ArrowRight,  
+  Award,
   TrendingUp, 
   AlertCircle, 
   Users, 
   FileText, 
   Scale,
-  LucideIcon // <--- Importado para tipagem
+  LucideIcon 
 } from "lucide-react";
 
-// --- INTERFACES PARA TIPOSCAGEM (Corrige erros TS) ---
+// --- INTERFACES PARA TIPOSCAGEM ---
 
 interface TabContent {
   title: string;

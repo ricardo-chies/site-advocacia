@@ -29,19 +29,19 @@ const areas: AreaItem[] = [
   {
     icon: Scale,
     title: "Direito Trabalhista",
-    desc: "Defesa especializada para bancários contra abusos trabalhistas, incluindo horas extras, assédio moral e irregularidades contratuais.",
+    desc: "Defesa especializada para bancários contra abusos trabalhistas.",
     link: "/areas/trabalhista-bancario"
   },
   {
     icon: HeartPulse,
     title: "Direito da Saúde",
-    desc: "Negativa de cobertura, cancelamento indevido, reajustes abusivos e recusa de procedimentos médicos pelo plano de saúde.",
+    desc: "Negativa de cobertura, cancelamento indevido e reajustes abusivos.",
     link: "/areas/plano-de-saude"
   },
   {
     icon: HomeIcon,
     title: "Direito Imobiliário",
-    desc: "Atuação em compra e venda de imóveis, contratos, regularização, usucapião e resolução de conflitos imobiliários.",
+    desc: "Compra e venda, regularização, usucapião e contratos.",
     link: "/areas/direito-imobiliario"
   },
 ];
@@ -68,14 +68,10 @@ function HeroSection() {
 
       <div className="container relative z-10 pt-24 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text */}
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="h-px w-10" style={{ backgroundColor: "oklch(74% 0.12 80)" }} />
-              <span className="text-sm font-medium uppercase tracking-widest" style={{ color: "oklch(74% 0.12 80)" }}>
-                Direito da Saúde e Direito Trabalhista Bancário
-              </span>
-            </div>
+          
+          {/* COLUNA ESQUERDA: Texto + Cards de Áreas */}
+          <div className="flex flex-col justify-center">
+            {/* REMOVIDO: Badge "Advocacia Especializada" */}
 
             <h1
               className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
@@ -88,9 +84,33 @@ function HeroSection() {
               Advocacia
             </h1>
 
-            <p className="text-lg mb-8 leading-relaxed" style={{ color: "oklch(80% 0.03 245)" }}>
-             Especialistas em Direito da Saúde, Direito Trabalhista Bancário e Direito Imobiliário: atuação em planos de saúde, erro médico, SUS, seguros; defesa de bancários contra horas extras indevidas, assédio e irregularidades trabalhistas; e segurança jurídica em compra e venda, regularização de imóveis, usucapião e conflitos contratuais. Defenda seus direitos e seu patrimônio com quem entende profundamente da área.
+            <p className="text-lg mb-8 leading-relaxed max-w-xl" style={{ color: "oklch(80% 0.03 245)" }}>
+             Especialistas em <strong>Direito da Saúde</strong>, <strong>Trabalhista Bancário</strong> e <strong>Imobiliário</strong>. 
+             Defendemos seus direitos com expertise técnica e atendimento humanizado.
             </p>
+
+            {/* --- CARDS DE ÁREAS INTEGRADOS AQUI (Minimalista) --- */}
+            <div className="space-y-3 mb-8">
+              {areas.map((area, index) => (
+                <Link key={index} href={area.link}>
+                  <div
+                    className="group flex items-center p-3 rounded-lg border cursor-pointer transition-all duration-300 hover:bg-white/5"
+                    style={{ borderColor: "oklch(25% 0.06 245)" }}
+                  >
+                    <div className="mr-3 p-2 rounded-md bg-white/5 group-hover:bg-yellow-500/10 transition-colors">
+                      <area.icon className="w-5 h-5" style={{ color: "oklch(74% 0.12 80)" }} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-white text-sm group-hover:text-yellow-400 transition-colors">
+                        {area.title}
+                      </h3>
+                    </div>
+                    <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-[-10px] group-hover:translate-x-0" style={{ color: "oklch(74% 0.12 80)" }} />
+                  </div>
+                </Link>
+              ))}
+            </div>
+            {/* --------------------------------------------------- */}
 
             <div className="flex flex-wrap gap-4">
               <a
@@ -101,10 +121,21 @@ function HeroSection() {
                 Saiba Mais
                 <ArrowRight className="w-5 h-5" />
               </a>
+              
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-7 py-4 rounded-lg font-semibold text-base transition-all duration-200 hover:opacity-90"
+                style={{ backgroundColor: "oklch(74% 0.12 80)", color: "oklch(16% 0.065 245)" }}
+              >
+                Falar no WhatsApp
+                <MessageCircle className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          {/* Photo */}
+          {/* COLUNA DIREITA: Foto (Mantida no Tamanho Original) */}
           <div className="relative flex justify-center lg:justify-end">
             <div className="relative">
               {/* Decorative border */}
@@ -219,7 +250,7 @@ function SearchSection() {
               Encontre informações sobre
             </div>
             <div className="text-xl font-bold text-white" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Direito da Saúde
+              Nossas Especialidades
             </div>
           </div>
           <form onSubmit={handleSearch} className="flex-1 flex gap-3 md:ml-8">
@@ -246,118 +277,6 @@ function SearchSection() {
               Buscar
             </button>
           </form>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function AreasSection() {
-  return (
-    <section id="areas" className="py-20" style={{ backgroundColor: "oklch(16% 0.065 245)" }}>
-      <div className="container">
-        {/* Header */}
-        <div className="text-center mb-14">
-          <h2
-            className="text-3xl lg:text-4xl font-bold mb-6"
-            style={{ color: "white", fontFamily: "'Playfair Display', serif" }}
-          >
-            Áreas de Atuação
-          </h2>
-          <p style={{ color: "rgba(255, 255, 255, 0.7)" }}>
-            Conheça todas as especialidades do nosso escritório
-          </p>
-        </div>
-
-        {/* Grid com áreas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {areas.map((area, index) => (
-            <div key={index}>
-              {area.link ? (
-                <Link
-                  to={area.link}
-                  className="group block rounded-xl p-6 transition-all duration-300 hover:scale-105 h-full cursor-pointer"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)"
-                  }}
-                  // CORREÇÃO AQUI: Mudado de HTMLDivElement para HTMLAnchorElement
-                  onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                    const el = e.currentTarget;
-                    el.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-                    el.style.borderColor = "oklch(74% 0.12 80)";
-                  }}
-                  // CORREÇÃO AQUI: Mudado de HTMLDivElement para HTMLAnchorElement
-                  onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                    const el = e.currentTarget;
-                    el.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-                    el.style.borderColor = "rgba(255, 255, 255, 0.1)";
-                  }}
-                >
-                  <div className="flex items-start gap-4">
-                    <area.icon
-                      className="w-8 h-8 flex-shrink-0 transition-colors duration-300 group-hover:text-yellow-400"
-                      style={{ color: "oklch(74% 0.12 80)" }}
-                    />
-                    <div className="flex-1">
-                      <h4
-                        className="font-bold text-base mb-2 transition-colors duration-300 group-hover:text-yellow-400"
-                        style={{ color: "white" }}
-                      >
-                        {area.title}
-                      </h4>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{ color: "rgba(255, 255, 255, 0.7)" }}
-                      >
-                        {area.desc}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ) : (
-                // Este bloco 'else' usa uma div normal, então mantém HTMLDivElement
-                <div
-                  className="group rounded-xl p-6 transition-all duration-300 hover:scale-105 h-full cursor-pointer"
-                  style={{
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)"
-                  }}
-                  onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
-                    const el = e.currentTarget;
-                    el.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-                    el.style.borderColor = "oklch(74% 0.12 80)";
-                  }}
-                  onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-                    const el = e.currentTarget;
-                    el.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-                    el.style.borderColor = "rgba(255, 255, 255, 0.1)";
-                  }}
-                >
-                  <div className="flex items-start gap-4">
-                    <area.icon
-                      className="w-8 h-8 flex-shrink-0 transition-colors duration-300 group-hover:text-yellow-400"
-                      style={{ color: "oklch(74% 0.12 80)" }}
-                    />
-                    <div className="flex-1">
-                      <h4
-                        className="font-bold text-base mb-2 transition-colors duration-300 group-hover:text-yellow-400"
-                        style={{ color: "white" }}
-                      >
-                        {area.title}
-                      </h4>
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{ color: "rgba(255, 255, 255, 0.7)" }}
-                      >
-                        {area.desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -408,7 +327,7 @@ function AboutSection() {
 
             <div className="grid grid-cols-2 gap-4 mb-8">
               {[
-                { icon: Award, text: "Especialista em Direito da Saúde" },
+                { icon: Award, text: "Especialista Multidisciplinar" },
                 { icon: Clock, text: "Mais de 10 anos de experiência" },
                 { icon: Shield, text: "Ética e sigilo profissional" },
                 { icon: CheckCircle, text: "Atendimento em todo o Brasil" },
@@ -560,7 +479,6 @@ export default function Home() {
       <HeroSection />
       <GoogleReviewsSection />
       <SearchSection />
-      <AreasSection />
       <AboutSection />
       <ReviewsSection />
     </div>
