@@ -51,8 +51,6 @@ export default function Footer() {
                 { href: "/#quem-somos", label: "Quem Somos" },
                 { href: "/#areas", label: "Áreas de Atuação" },
                 { href: "/blog", label: "Blog Jurídico" },
-                { href: "/noticias", label: "Notícias" },
-                { href: "/#faq", label: "Perguntas Frequentes" },
                 { href: "/#contato", label: "Contato" },
               ].map((link) => (
                 <li key={link.href}>

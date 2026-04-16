@@ -14,6 +14,12 @@ import Noticias from "./pages/Noticias";
 import NoticiaPost from "./pages/NoticiaPost";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
+import TrabalhistaBancario from "./pages/areas/trabalhista-bancario";
+import Trabalhista from "./pages/areas/trabalhista";
+import Previdenciario from "./pages/areas/previdenciario";
+import PlanoDeSaude from "./pages/areas/plano-de-saude";
+import DireitoImobiliario from "./pages/areas/Direito-Imobiliario";
+
 
 function Router() {
   return (
@@ -23,6 +29,13 @@ function Router() {
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/noticias" component={Noticias} />
       <Route path="/noticias/:slug" component={NoticiaPost} />
+      <Route path="/areas/trabalhista-bancario" component={TrabalhistaBancario} />
+      <Route path="/areas/trabalhista" component={Trabalhista} />
+      <Route path="/areas/previdenciario" component={Previdenciario} />
+      <Route path="/areas/plano-de-saude" component={PlanoDeSaude} />
+      {/* 2. Adicione a rota aqui */}
+      <Route path="/areas/direito-imobiliario" component={DireitoImobiliario} />
+      
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="/admin" component={Admin} />
       <Route path="/404" component={NotFound} />
